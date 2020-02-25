@@ -1,12 +1,19 @@
 import React from 'react';
-import { Layout } from 'antd';
-import Sidebar from './UI/Sidebar'
+import {Layout} from 'antd';
+import Sidebar, {refCircle, refLine, refFreeInstance, refRectangle} from './UI/Sidebar'
 import SplitPane from 'react-split-pane';
-import { PaperContainer, Circle, Layer } from '@psychobolt/react-paperjs';
+import {PaperContainer, Circle, Layer} from '@psychobolt/react-paperjs';
+import {
+    LineTool,
+    FreeformPathTool,
+    PolygonTool,
+    RectangleTool,
+    CircleTool,
+    SegmentPathTool
+} from '@psychobolt/react-paperjs-editor';
 import './App.css';
 
-const { Header, Sider, Content } = Layout;
-const Shapes = () => <Circle center={[120, 50]} radius={35} fillColor="#00FF00" />;
+const {Header, Sider, Content} = Layout;
 
 const App = () => {
     return (
@@ -16,27 +23,36 @@ const App = () => {
             </Header>
             <Layout>
                 <Sider width={48} className="me-left-bar">
-                    <Sidebar />
+                    <Sidebar/>
                 </Sider>
                 <Content className="me-canvas">
-                    <PaperContainer>
-                        <Circle center={[80, 50]} radius={35} fillColor="red" />
-                        <Layer>
-                            <Shapes />
-                        </Layer>
+                    <PaperContainer canvasProps={{
+                        border: '1px solid',
+                        width: window.screen.width,
+                        height: window.screen.height
+                    }}>
+                        <FreeformPathTool ref={refFreeInstance}/>
+                        <LineTool ref={refLine}/>
+                        <CircleTool ref={refCircle}/>
+                        <RectangleTool ref={refRectangle}/>
                     </PaperContainer>
+                    {/*<PaperContainer ={(e) => {*/}
+                    {/*    console.log(e)*/}
+                    {/*}}>*/}
+
+                    {/*</PaperContainer>*/}
                 </Content>
                 <Content className="me-right-bar">
                     <SplitPane
                         defaultSize="60%"
                         split="horizontal"
-                        style={{ position: 'static' }}
-                        resizerStyle={{ padding: '5px' }}
-                        paneStyle={{ background: '#eee' }}
-                        pane2Style={{ background: '#aaa4ba' }}
+                        style={{position: 'static'}}
+                        resizerStyle={{padding: '5px'}}
+                        paneStyle={{background: '#eee'}}
+                        pane2Style={{background: '#aaa4ba'}}
                     >
-                        <div />
-                        <div />
+                        <div/>
+                        <div/>
                     </SplitPane>
                 </Content>
             </Layout>
