@@ -1,20 +1,18 @@
 import React from 'react';
 import {Layout} from 'antd';
-import Sidebar, {refCircle, refLine, refFreeInstance, refRectangle} from './UI/Sidebar'
+import Sidebar, {refCircle, refLine, refFreeInstance, refRectangle,refPolygonTool} from './UI/Sidebar'
 import SplitPane from 'react-split-pane';
-import {PaperContainer, Circle, Layer} from '@psychobolt/react-paperjs';
+import {PaperContainer, PanAndZoom} from '@psychobolt/react-paperjs';
 import {
     LineTool,
     FreeformPathTool,
-    PolygonTool,
     RectangleTool,
     CircleTool,
-    SegmentPathTool
+    PolygonTool
 } from '@psychobolt/react-paperjs-editor';
 import './App.css';
 
 const {Header, Sider, Content} = Layout;
-
 const App = () => {
     return (
         <Layout className="me-layout">
@@ -35,6 +33,7 @@ const App = () => {
                         <LineTool ref={refLine}/>
                         <CircleTool ref={refCircle}/>
                         <RectangleTool ref={refRectangle}/>
+                        <PolygonTool ref={refPolygonTool}/>
                     </PaperContainer>
                     {/*<PaperContainer ={(e) => {*/}
                     {/*    console.log(e)*/}

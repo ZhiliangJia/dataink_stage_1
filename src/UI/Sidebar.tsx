@@ -10,7 +10,7 @@ let lineInstance = null;
 let circleInstance = null;
 let freePathInstance = null;
 let rectangleInstance = null;
-
+let refPolygonInstance = null;
 export const refLine = instanceRef => {
     lineInstance = instanceRef
 }
@@ -26,7 +26,9 @@ export const refFreeInstance = instanceRef => {
 export const refRectangle = instanceRef => {
     rectangleInstance = instanceRef
 }
-
+export const refPolygonTool = instanceRef => {
+    refPolygonInstance = instanceRef
+}
 export default class Sidebar extends React.Component {
 
     render() {
@@ -44,10 +46,12 @@ export default class Sidebar extends React.Component {
                 <Button onClick={() => {
                     rectangleInstance.activate()
                 }} type="primary" shape="circle"><IconFont type="icon-Select-"/></Button>
-                <Button type="primary" shape="circle"><IconFont type="icon-hand"/></Button>
+                <Button onClick={() => {
+                    refPolygonInstance.activate()
+                }}type="primary" shape="circle"><IconFont type="icon-Line-2"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-Text-box"/></Button>
-                <Button type="primary" shape="circle"><IconFont type="icon-zoom"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-hand"/></Button>
+                <Button type="primary" shape="circle"><IconFont type="icon-zoom"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-Link-Select"/></Button>
             </div>
         );
