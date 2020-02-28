@@ -28,7 +28,6 @@ export const refFreeInstance = instanceRef => {
 export const refRectangle = instanceRef => {
     rectangleInstance = instanceRef
 }
-
 export const refPanZoom = instanceRef => {
     panZoomInstance = instanceRef
 }
@@ -37,6 +36,7 @@ export const refText = instanceRef => {
     textInstance = instanceRef
     panZoomInstance.activate()
 }
+
 
 export default class Sidebar extends React.Component {
     state = {visible: false, refText: 'Text'};
@@ -84,6 +84,7 @@ export default class Sidebar extends React.Component {
                 }} type="primary" shape="circle"><IconFont type="icon-Text-box"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-zoom"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-hand"/></Button>
+                <Button type="primary" shape="circle"><IconFont type="icon-zoom"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-Link-Select"/></Button>
                 <Modal
                     title="Text"

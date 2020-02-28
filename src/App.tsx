@@ -6,7 +6,6 @@ import {PaperContainer, Circle, Layer, PointText} from '@psychobolt/react-paperj
 import {
     LineTool,
     FreeformPathTool,
-    PolygonTool,
     RectangleTool,
     CircleTool,
     SegmentPathTool,
