@@ -12,6 +12,8 @@ let freePathInstance = null;
 let rectangleInstance = null;
 let panZoomInstance = null;
 let textInstance = null;
+let handInstance = null;
+let paperScope = null;
 
 export const refLine = instanceRef => {
     lineInstance = instanceRef
@@ -28,6 +30,7 @@ export const refFreeInstance = instanceRef => {
 export const refRectangle = instanceRef => {
     rectangleInstance = instanceRef
 }
+
 export const refPanZoom = instanceRef => {
     panZoomInstance = instanceRef
 }
@@ -35,6 +38,17 @@ export const refPanZoom = instanceRef => {
 export const refText = instanceRef => {
     textInstance = instanceRef
     panZoomInstance.activate()
+}
+export const refHand = instanceRef => {
+    handInstance = instanceRef
+    console.log(handInstance)
+    panZoomInstance.activate()
+}
+
+export const setPaperScope = (ps) => {
+    paperScope = ps
+    handInstance.setPaperScope(paperScope)
+    console.log(paperScope)
 }
 
 
@@ -84,8 +98,9 @@ export default class Sidebar extends React.Component {
                 }} type="primary" shape="circle"><IconFont type="icon-Text-box"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-zoom"/></Button>
                 <Button type="primary" shape="circle"><IconFont type="icon-hand"/></Button>
-                <Button type="primary" shape="circle"><IconFont type="icon-zoom"/></Button>
-                <Button type="primary" shape="circle"><IconFont type="icon-Link-Select"/></Button>
+                <Button onClick={() => {
+                    handInstance.activate()
+                }} type="primary" shape="circle"><IconFont type="icon-Link-Select"/></Button>
                 <Modal
                     title="Text"
                     visible={this.state.visible}

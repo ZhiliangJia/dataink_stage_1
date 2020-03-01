@@ -7,7 +7,8 @@ type Props = {
     paper: PaperScope,
     onMouseDown: ToolEventHandler,
     onMouseDrag: ToolEventHandler,
-    onMouseUp: ToolEventHandler
+    onMouseUp: ToolEventHandler,
+    onMouseMove: ToolEventHandler
 }
 
 class BaseTool<P> extends React.Component<P & Props> {
@@ -18,6 +19,8 @@ class BaseTool<P> extends React.Component<P & Props> {
         },
         onMouseDown: () => {
         },
+        onMouseMove: () => {
+        }
     }
     // @ts-ignore
     path: Path
